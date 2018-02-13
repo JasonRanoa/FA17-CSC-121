@@ -1,0 +1,132 @@
+CSC 121 001 FA17
+21 September Thursday
+
+Day 10. Chapter 7.
+Formal Introduction to Object-Oriented Programming
+
+LECTURE NOTES
+Outline:
+	Constructors and Destructors
+	Private Member Functions
+	Pass by Value and by Reference
+	Object Composition
+	Structures
+		These are C code and are the precursor of classes.
+
+---
+
+CLASSES
+These are abstract data types,
+abstract meaning the implementation is hidden from the user
+	(i.e. there is a separate header file.)
+
+---
+
+CONSTRUCTORS AND DESTRUCTORS
+Look at Program 7-7 @ Page 430
+
+Definition: 	A constructor is executed every time an object is declared.
+				e.g. 	ExampleClass s; // The constructor runs.
+
+				Constructor methods have the same name of that of the class.
+				e.g.	class ExampleClass { ... }
+						// This class should have constructor declared as ExampleClass();
+
+				Syntax: Function Prototype
+						Such as those in the header file.
+
+						class Demo {
+						   public:
+						      Demo();       // Constructor prototype
+						};
+
+Definition:		A destructor is executed every time an object is destroyed.
+				Usually, the code in here is made for graceful shutdown of programs (i.e. clean up after yourself).
+					e.g. Clean up allocation of dynamic memory (Free the space)
+				Again, GRACEFUL SHUTDOWN.
+
+				This function is guaranteed to be called when the object goes out of scope.
+
+				Syntax:	Method Prototype
+						class Demo {
+						public:
+							~Demo(); 		// Destructor prototype
+						}
+
+						Note that tilde (~) before the class name.
+
+Syntax:	Function Implementation
+		Basically like all the others.
+
+		Demo::Demo() { ... }
+		Demo::~Demo() { ... }
+
+---
+
+NOTE. Program 7-10 uses the keyword -- const.
+	  While that isn't new, its usage with functions is.
+
+	  Apparently, it disallows editing of function code.
+
+	  Example Usage:	In function prototype,
+	  					void showValues(const DemoTen&)
+
+						The const keyword here makes the passed argument un-editable.
+
+---
+
+NOTE. Clearing the stream.
+	  In Program 7-10, there is technique used to avoid complications when getting an integer and a string (in that order) from the input stream.
+
+	  Since when retrieving an integer value,
+	  the user would have to press "Enter" to pause(?) the input stream.
+
+	  However, the new line character (\n) from pressing "Enter" would be left on the input stream. If the getline() function is called right after, it would stop immediately since it reads a newline character.
+
+	  e.g.		cout << "Part number: ";
+	  			cin  >> partNum; // declared as int.
+
+				cout << "Description: ";
+				cin.get();
+				getline(cin, description);
+				// description declared as std::string.
+
+---
+
+Private Methods and Variables
+These can be only be used by methods inside the same object.
+
+For the other functions to access these values,
+the convention is to usually do GETTERS and SETTERS.
+
+	For Program 7-10,
+	class InventoryItem has four GET methods.
+		i.e. getPartNum(), getDescription(), getOnHand(), getPrice()
+
+	It only has one SET methods (not named set.)
+		i.e. storeInfo();
+
+Even with sophisticated code, getters and setters are used.
+
+NOTE. The technical name for these are ACCESSORS and MUTATORS.
+
+---
+
+NOTE. For prototypes, variable names are not necessary for function parameters.
+	  For implementation, they are necessary.
+
+		  Function Prototype
+		  void showValues (const InventoryItem&);
+
+		  NOTE. This should be before any use of the function.
+		  		Usually before the main() function.
+
+		  Function Implementation - Function Signature(?)
+		  void showValues(const InventoryItem &item) { ... }
+
+		  NOTE. If you don't want to use the prototype,
+		  		you can also declare before the main() function.
+
+				However, this is usually done in conjunction with the prototype.
+
+---

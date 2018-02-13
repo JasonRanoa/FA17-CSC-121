@@ -1,0 +1,94 @@
+CSC 121 001. FA17.
+September 5 Tuesday.
+
+Lecture Notes
+Project in Use: Sandbox-Wk3.Ch4-5
+
+Classes Included:
+	AgeEval
+		Gets int age from user and saves it as age.
+		Prints output depending on age value.
+	LetterGrader
+		Gets int testScore from user.
+		Converts it to a letter grade using nested if statements.
+		Prints letter grade.
+	ClubMembership
+		Presents a menu interface for the user.
+		Asks for type of membership and number of participants.
+		Outputs total charges.
+		// There is an additional method called proceduralClub()
+		   that has procedural code. This was part of an activity to convert if statements to switch statements.
+
+---
+
+Chapter 4 & 5. Control Statements and Structured Programming
+
+There are three kinds of statements.
+	1. Sequential
+	2. Branching - This is Chapter 4.
+	3. Iteration - This is Chapter 5.
+
+Every language has its own syntax for the branching and iterations. However, it shouldn't matter that much.
+
+---
+
+Short Video;
+Buckys C++ Programming Tutorials - 17 - if / else statement
+URL: https://youtu.be/jK83lln_T1k
+
+Syntax:
+	if ( condition ) {
+		// code block here
+	} else {
+		// code block here
+	}
+
+---
+
+Example:
+
+	#include <iostream>
+	using namespace std;
+
+	int main() {
+		int age = 67;
+		if (age > 60) {
+			cout << "Wow, you are old!" << endl;
+		} else {
+			cout << "You are young. Get a job." << endl;
+		}
+	}
+
+Using two <if> statements is not that great of a programming style.
+Use the <else> part.
+
+---
+
+Syntax  	How the code is written.
+			e.g. What characters need to be in there.
+				 In C++, it is:
+				 	if ( condition ) { codeblock } else { codeblock }
+
+			After this class, fixing if statements should be an after though.
+
+Semantics	What the code does.
+			This is what is usually discussed as a group.
+
+			e.g. I have no compiler errors but the code isn't doing what I want to do.
+
+---
+
+The norm in software development, when getting input from the user, is to assume a dumb user.
+
+---
+
+The Switch Statement
+This is usually the way to go when using menu-driven interfaces.
+
+Syntax:		switch (variable) {
+				case <value>:
+					<statement>
+					break;
+				default:
+					<statement>
+			}

@@ -1,0 +1,55 @@
+CSC 121 001.
+Day 3. Tuesday.
+
+Lecture Notes.
+
+---
+
+Static Casting
+Changing the data type of the referenced variable explicitly.
+
+Syntax: static_cast<data_type>(value)
+
+e.g.    Casting int as double in a division.
+        ---
+        int a, b;
+        a = 5;
+        b = 2;
+
+        // This command prints out 2.
+        cout << a / b << endl;
+
+        // This command prints out 2.5.
+        cout << static_cast<double>a / b;
+        ---
+
+---
+
+Overflow and Underflow
+These is something we need to be aware of when doing scientific calculations.
+
+---
+
+Debugging in Visual Studio.
+You can insert breakpoints in Visual Studio and look at what the value of the variables are.
+
+---
+
+The cin object.
+
+The string extraction operator (>>) is used together with cin()
+
+---
+
+System.pause();
+
+---
+
+To get a line (i.e. a string until the new line character),
+use getline().
+
+It has two arguments.
+    (1) The input stream. (e.g. cin)
+    (2) The string variable to store it in.
+
+e.g. getline(cin, name);

@@ -1,0 +1,49 @@
+CSC 121 001 Computer Science I
+2 November 2017 Thursday
+
+CHAPTER 13 Advanced File I/O Operations
+Continuation on Binary Files
+
+---
+
+Working with structure data and files.
+
+TERM: 	Record
+		-	Structure data are saved in this format.
+		-	This is one real life entity.
+			For example, a Person entity.
+		- 	This technically contains fields.
+
+IRL, records might reach in the number of millions.
+Using text files for this can cause slowness.
+When dealing with data on that scale,
+	it is convention to use BINARY FILES.
+
+	Why? For a number of reasons.
+		-	Reading and writing binary files does not need conversion
+			to and from encoding schemes such as ASCII.
+		-	Binary files allow raw input of data, which bypasses the
+			operating system's writing methods.
+
+	Trivia.
+		The biggest database company is Oracle.
+		Larry Ellison, the founder of Oracle, started with
+			binary files and binary trees.
+
+---
+
+When working with binary files,
+these three operations must be available.
+
+	1. 	Read
+	2. 	Write
+	3.	Edit / Update
+
+---
+
+For structures and binary files,
+take a look at Program 13-19.
+
+	Accompanying File: invtry.dat
+
+Apparently, this program is a functioning (sort of) database.

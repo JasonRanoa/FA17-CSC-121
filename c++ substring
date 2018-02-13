@@ -1,0 +1,18 @@
+int Directory::searchByName(const string& nameArg, vector<string>& matches) {
+    int count = 0;
+    string nameArgUpper = nameArg;
+    std::transform(nameArgUpper.begin(), nameArgUpper.end(), nameArgUpper.begin(), ::toupper);
+
+    for (string& r : records) {
+        string rUpper = r;
+        std::transform(rUpper.begin(), rUpper.end(), rUpper.begin(), ::toupper);
+
+        size_t result = rUpper.find(nameArgUpper);
+        if (result != -1) {
+            matches.push_back(r);
+            count++;
+        }
+    }
+
+    return count;
+}

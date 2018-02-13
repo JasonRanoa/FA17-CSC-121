@@ -1,0 +1,84 @@
+CSC 121 001 FA17
+3 October Tuesday
+
+Day 10. Chapter 8. Arrays.
+		Chapter 9. Searching and Sorting Algorithms
+
+LECTURE NOTES
+	Range-Based For Loops
+	Parallel Arrays
+	Vectors
+
+---
+
+Range-Based For Loops
+Program 8-9.
+
+Syntax: 	for (dataType val : arrayName) { .. }
+			wherein dataType is the data type of the array,
+					val is the variable for the array member, and
+					arrayName is the name of the array.
+
+This thing uses an iterator (val) and iterates over an array (arrayName).
+This kind of command is popular in Java and C++'s Standard Template Library.
+
+---
+
+String Processing
+C++ strings are character arrays, so it is possible to iterate through all of them.
+
+Example Code:
+	int is[] { 1, 2, 3, 4, 5 };
+	string word = "Doge.";
+
+	for (char s : word) {
+		cout << s << endl;
+	}
+
+	for (int i = 0; i < word.length(); i++) {
+		cout << word[i] << endl;
+	}
+
+---
+
+Vectors
+
+Standard Template Library (STL) is a collection of programmer defined data types and algorithms that are available to C++ out of the box.
+The vector data type is in STL.
+
+This is similar to a one-dimensional array, but better.
+It is superior because:
+	1. 	The size doesn't have to be declared at compile time.
+	2. 	There's a whole lot of methods that come with it.
+		e.g. Switch last element with the first.
+
+For example: Program 8-24.
+
+To use vectors, include the <vector> standard library.
+Syntax:		vector <dataType> varName (arguments)
+			wherein the dataType is the data type of the members,
+					varName is the name of the vector, and
+					arguments are optional.
+
+For more information, http://www.cplusplus.com/reference/vector/vector/vector/
+
+---
+
+Two-Dimensional Array
+Program 8-21
+
+---
+
+Chapter 9
+Searching and Sorting Algorithms
+
+---
+
+Search Algorithms
+A method of locating a specific item in a collection of data.
+
+We discuss three searching algorithms in this class.
+Here are they.
+	1. 	Linear Search
+		wherein each member is being tested sequentially.
+		This is the simplest search algorithm.

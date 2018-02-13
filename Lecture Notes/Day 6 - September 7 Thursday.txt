@@ -1,0 +1,154 @@
+CSC 121 001. FA17.
+September 7 Thursday
+
+Lecture Notes.
+Project in Use: Sandbox-Wk3.Ch4-5
+				(Same as Day 5)
+
+---
+
+Continued Chapter 4. Making Decisions
+Involving strings, enums, ternary operators.
+
+---
+
+For < and > in string comparisons,
+the dictionary order is used.
+
+The first word in the order is found greater.
+
+For example,
+	bool d;
+	d = "Mark" < "John"
+	// d evaluates to True
+	// Mark is less than John since Mark appears later than John.
+
+---
+
+Reference: Program 4-21.
+This source code presents you with an essential Standard C++ Library.
+
+The Character Handling Library.
+#include <cctype>
+
+When doing character comparison, this library offers very powerful functions.
+e.g. test if character is alphanumeric.
+
+List of commonly used functions.
+These functions return a boolean value.
+	1. 	isalpha( char )
+		Return true if character is a letter.
+
+	2. 	isdigit( char )
+		Returns true if passed character is a digit.
+
+	3. 	islower( char )
+		Returns true is passed character is lowercase.
+
+	4. 	isupper( char )
+		Returns true is passed character is uppercase.
+
+	5. 	isspace( char )
+		Returns true is passed character is a whitespace character
+		e.g. <space>, <tab>
+
+---
+
+NOTE	Convention.
+		Functions that return a boolean value are typically prefixed with "is-".
+		As if it's telling -- Value IS {...}
+							  Return true if that's true. False if not.
+
+		Functions of this kind are usually defined to be tests.
+
+---
+
+The <cctype> library also has two case conversion functions.
+They are:
+	1.	toupper()
+	2.	tolower()
+
+---
+
+Conditional Operator
+This is in the form:	( condition ) ? value_if_true : value_if_false
+
+This is a very concise way of writing an if/else statement.
+For example,
+	hours = hours < MIN_HOURS ? MIN_HOURS : hours;
+
+	The given code means:
+		If hours is less than MIN_HOURS,
+			then hours <- MIN_HOURS
+		else hours <- hours
+
+---
+
+ENUMERATED DATA TYPES
+
+DEFINITION SYNTAX:
+	enum VariableName { NameOne = 1, NameTwo, ..., NameLast };
+
+	The index assignment to the names are optional. If not included in the latter arguments, the compiler simply assigns the next integer (n + 1).
+		i.e. NameTwo will have 2 as its index and so on.
+	Normally, the index assignment isn't really done unless necessary. The enumeration declaration can function without it.
+
+	If an integer assignment isn't included in the first item,
+	the compiler starts with 0.
+		e.g. enum Names { NameOne, NameTwo }
+			 // NameOne now has an index of 0, NameTwo with 1.
+
+NOTE. On further research, using enum is basically defining a new data type.
+	  And enum can only function on the global scope.
+
+	      e.g. enum Suit { Diamonds, Hearts, Clubs, Spades };
+		  	   Suit s = Diamonds;
+
+	  However, there is also an enum class declaration.
+	  This limits the members of the enumeration to a namespace.
+
+	      e.g. enum class Suit { Diamonds, Hearts, Clubs, Spades };
+		       Suit s = Suit::Diamonds;
+
+		  Notice how it's needed to preface Diamonds with Suit::.
+
+---
+
+CHAPTER 5 LOOPS
+This chapter covers the last of the basics.
+
+There are three loop structures in C++
+(1) While loops, (2) For loops, and (3) Do While loops
+
+1. 	WHILE LOOPS
+	If condition evaluates to true, run the code.
+	Then, check condition again and if it evaluates to true, run the code again.
+	Rinse and repeat until condition evaluates to false.
+
+	Syntax:		while (condition) { ... }
+
+	It's important that there is code inside the block that would affect the result of the condition. The condition should eventually evaluate to false. If not, you'll have an infinite loop.
+
+	e.g. 		int i = 0;
+				while (i < 5) {
+					cout << i << endl;
+					i = i + 1; // This affects the condition.
+				}
+
+2.  DO WHILE LOOPS
+	Pretty much like the while loop but the code gets executed at least one.
+
+	Syntax:		do { ... } while (condition);
+
+3. 	FOR LOOP
+	Iterates a block of code by a defined number of times.
+
+	Syntax: 	for (initializer, condition, increment) { ... }
+
+	Here, the initializer gets executed first. It's tested against the condition. If condition evaluates true, the block of code and then the increment code gets executed.
+
+	Then, the condition is tested again. If it evaluates to true again, the block of code and the increment code gets executed. Rinse and repeat until the condition evaluates to false.
+
+---
+
+The increment operator (variable++)

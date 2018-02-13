@@ -1,0 +1,24 @@
+CSC 121 001 Computer Science I
+Day 1. August 22 Tuesday.
+
+Important Points:
+1.  Unreal Engine and Game Programming
+    This program can be used to develop games in C++ code. We're working towards in the course.
+
+2.  Visual Studio Community 15 for Windows
+    This is the IDE (Integrated Development Environment) that we will use for all coding in the course.
+    While there seems to be a parallel for Mac OSX, the instructor said that I have to figure things out by myself.
+
+3.  Basic File Structure for Programs.
+    In all of the programming in this course, there will be at least 3 files.
+
+    (1)   main.cpp
+          This file contains the code that will be executed. It should only contain one function, main(). The object instances and such should be included in the said function.
+
+    (2)   ClassName.h
+          This header file would contain the class definitions.
+          In C++, class definitions only include (as of this lesson) the names and scope of the properties and functions.
+          Example provided in the same folder: HelloWorld.h
+
+    (3)	  ClassName.cpp
+          This file should contain the class implementation. i.e. function definitions. 

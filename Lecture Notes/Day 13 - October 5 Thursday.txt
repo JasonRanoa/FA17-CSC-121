@@ -1,0 +1,78 @@
+CSC 121 001
+Computer Science I
+
+5 October 2017 Thursday
+Chapter 9 - Searching and Sorting Algorithms
+
+YouTube Videos:
+	1. 	Binary Search
+		YouTube: Binary Search by CS50 until 4:35.
+				 https://youtu.be/D5SrAga1pno
+
+		The problem with linear search is that if the target was to be in the last of a sorted list, it would waste its time in comparing the target against the first few items.
+
+		e.g. 	{ aaaa, aaab, aaac, ...., dcdb, dcdc, ...., zzzz }
+				If the target is 'star', the linear search would have to test ALL words before the s's.
+
+		The binary search, given a sorted list, takes a middle item and does a binary test (t/f) on it. The items before or after it, depending on the binary result, is taken out of the search space. Rinse and repeat.
+
+		The average search time is n.log(n)
+
+		NOTE that for this to work, the list must be sorted.
+		This is not a big minus since most lists are sorted in any case.
+
+		Pseudocode for Binary Search (Recursive):
+
+			----
+
+			binarySearch( key, array[], min, max)
+			// wherein key is search target,
+					   array[] is the total search space,
+					   min is the index where to start,
+					   max is the index where to end
+
+			    if ( max < min ): return -1
+				// This is a check to end the search.
+
+				else:
+					midpoint = findMidPoint(min, max)
+					if ( array[midpoint] < key ):
+					// If the key is greater than the value
+					// proceed to the latter half of the array.
+						binarySearch(key, array, midpoint + 1, max)
+						// This is a recursive method.
+					else if ( array[midpoint] > key ):
+					// If the key is less than the value
+					// proceed to the former half of the array.
+						binarySearch(key, array, min, midpoint - 1)
+					else
+						return midpoint
+
+			----
+
+		There is non-recursive code in Program 9-2.
+		END---
+
+	2. 	Selection Sorting Algorithm
+		YouTube: Selection Sort by CS50
+				 https://youtu.be/f8hXR_Hvybo
+
+		The main idea here is to keep two lists, sorted and unsorted.
+		Each item is considered and added to the sorted list.
+
+		Example implementation:
+		Find the minimum in the whole list by comparing each item and keeping track of what's the smallest.
+		Then, switch the first and the smallest.
+		Next, consider a sublist of the ( element + 1 ) to last element.
+			  Rinse and repeat until finished.
+
+		The problem with this algorithm is that it runs the same number of comparisons whether the given list is unsorted or not.
+
+		There is CPP implementation in Program 9-5.
+		END---
+
+	3.	Bubble Sorting Algorithm
+		YouTube: Bubble Sort by CS50
+				 https://youtu.be/8Kp-8OGwphY
+
+		There is CPP implementation in Program 9-4.

@@ -1,0 +1,114 @@
+CSC 121 001. FA17.
+August 31 Thursday.
+
+Lecture Notes.
+
+---
+
+STRING MANIPULATIONS
+in collaboration with cout.
+
+	Note: This section discusses source code on 3-18.
+
+To use it, include the following code:
+	#include <iomanip>
+Refers to the input-output manipulation system library.
+
+Whatever strings and data that come after these string manipulation commands will have formatting applied to it.
+
+e.g. cout << fixed << showpoint << setprecision(1);
+
+1. 	fixed
+	Decimal numbers should show as decimal numbers.
+	Without this, the number might show up in scientific notation.
+		e.g. 3.56e+4
+
+2. 	showpoint
+	Forces the decimal number to show up.
+	e.g. if double x = 3, then 3.0 shows up.
+
+3.	setprecision( precision )
+	Combined with fixed, fixes the number of digits after the decimal point.
+		e.g. 	double x = 22.0
+				cout << fixed << setPrecision(1) << x;
+				// shows 22.0
+
+	Without fixed, it determines the number of significant figures.
+		e.g.	double x = 22.0
+				cout << setPrecision(1) << x;
+				// shows 2e+01
+
+4. 	left
+	This makes the text left-aligned.
+	To be used with setw().
+
+5. 	right
+	This makes the text right-aligned.
+	To be used with setw().
+
+6. 	setw( width )
+	The minimum number of places to be placed for the following pieces of data.
+
+---
+
+Constant Variables.
+Variables declared this way cannot be edited later on the code. If someone attempts to do so, the compiler throws an error.
+
+	e.g. const double PI = 3.14159
+
+---
+
+Input Functions with cin
+
+1. 	cin.get( character_var )
+	Gets a character from the input stream and saves it to the passed argument.
+
+	If no argument is passed, the function returns the character retrieved from the input stream.
+
+	Can be used to pause a program.
+
+	This is used to read from a file. This will be discussed later in the File chapter.
+
+	This can be also used to retrieve user input from a navigation.
+	e.g.	Enter a number.
+				[R] Refresh
+				[E]	Exit
+				[D] Die
+			Command? _
+
+---
+
+-	String append operator (+)
+	Appends two strings together.
+	Needs the <string> standard library.
+
+STRING FUNCTIONS
+used in Program 3-24.
+
+1. 	string.assign( number, char )
+	Take the char and assign in to the string variable. Repeat it a number of times.
+
+---
+
+RANDOMIZATION
+from Program 3-31.
+
+Seed Values.
+This is what is fed the first time to the rand() function. Using the same seed for rand() always creates the same result.
+
+The convention here is to get a seed from UNIX Time (the number of seconds after January 1, 1970.)
+
+To set the seed, use the function.
+	srand( seed );
+	// seeding the random generator.
+
+To refer to UNIX time at the present moment, use:
+	time(0)
+
+Together: 	srand(time(0));
+
+---
+
+Convention: Getting a random number between a max and a min.
+
+	rand() % (maxvalue - minvalue + 1) + 1

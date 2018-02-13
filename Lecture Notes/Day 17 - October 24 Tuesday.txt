@@ -1,0 +1,73 @@
+CSC 121 001
+Computer Science I
+
+Day 17 (?) October 24 Tuesday
+Chapter 10 Pointers Part II.
+
+Why should we use pointers as function arguments?
+Passing function objects can be wasteful, especially when they're huge.
+Using pointers as arguments only needs to copy a few bytes.
+
+Also -- it's also very easy to lose track of changes to objects, especially when it's being copied around.
+
+---
+
+NEW OPERATOR -- ARROW OPERATOR (->)
+Accesses the member data of a pointer to a class/struct.
+
+	For example,
+	struct Foo {
+		int x;
+		int y;
+	};
+	Foo fooObject;
+	Foo* fooPointer = &fooObject;
+
+	// Doing (*fooPointer).x is the same as fooPointer->x
+
+---
+
+Pointers to Constants
+A pointer to a constant may not be used to change the value it points to.
+
+	For example,
+	const int x = 5;
+	const int *y = &x; // y is a pointer to a const int.
+
+	Whenever a pointer to a constant variable is made,
+	the keyword const has to be added.
+
+	So, const int *y reads as (const int) *y;
+
+Constant Pointer
+may not be changed after it's initialized.
+
+---
+
+Look at Program 10-13.
+
+---
+
+NOTE.
+Function parameters are those used in declaration and implementation.
+Function arguments are those passed in the driver.
+
+---
+
+Variation of 10-13.
+
+	void displayValues (const int * const numbers, int size ) { ... }
+	The first parameter reads as:
+		( const int ) ( * const numbers )
+		The first const refers to a constant value (values if array).
+		The second const implies that the address stored in the pointer
+			cannot be mutated.
+
+---
+
+Program 10-15.
+Return a pointer to an array.
+
+Notes:
+-	Line 9
+	Function prototype that has a return type of int pointer.

@@ -1,0 +1,99 @@
+CSC 121 001 Computer Science I
+2 November 2017 Thursday
+
+CHAPTER 13 Advanced File I/O Operations
+This was started on 31 October Tuesday.
+
+---
+
+The put() stream method is the opposite of get().
+It accepts a character (int) as argument and inserts that character to an output stream.
+
+---
+
+Rewinding the File
+For example,
+	when the pointer is in the middle of the file (due to reading a couple of lines), and you want the pointer to go back.
+
+To do this, use the method -- seekg().
+That method positions the pointer anywhere in the file.
+
+	Note that the g in seek-g implies that this seek method is for getting (i.e. reading).
+
+	In contrast, for string insertion,
+	there is a seekp() method (read as seek-put).
+
+	There are two arguments.
+	1. offset (int)
+	   ---
+	2. place
+	   --- there are three possible values for this.
+	   	   (1) Beginning of file	ios::beg
+		   (2) End of file
+		   (3) Current Cursor Position
+
+	The argument for these functions is offset in the NUMBER OF BYTES.
+
+	To find this out, just do some calculations (e.g. from structure data.)
+		For example,
+			the format for the file has this:
+			[Name, 11 characters] [Age, 2 characters] [newline]
+
+			To get the offset, just multiple the record number (e.g. 1187) by the number of bytes each record is supposed to take.
+
+	In using seekg(), ALWAYS USE THE clear() function.
+	This gets rid of the errors.
+		For example, when reading through the whole file,
+		the fail flag becomes true.
+		Using clear() removes that flag.
+
+---
+Take a look at Program 13-10.
+---
+
+BINARY FILES.
+This concept is better since when writing to a text file, the computer has to do 2 operations (writing bytes and converting to an encoding scheme). In a binary
+
+When dealing with binary streams,
+remember that the stream operators (<< and >>) cannot be used as
+it has implicit conversion to the encoding scheme (ASCII).
+
+For binary I/O,
+we only have two methods.
+	1.	read()
+	2.	write()
+
+Also, when opening an file stream, it's implicit that it's a text file.
+To indicate that the file is binary, include the ios::binary flag.
+
+	For example,
+	file.open("stuff.dat", ios::in | ios::binary);
+
+---
+
+WRITE AND READ METHODS
+These are more complicated.
+
+	write( addressOfBuffer, numberOfBytes );
+	Parameters:
+		addressOfBuffer 	means the address of the memory where the var is
+							saved.
+		numberOfBytes		the number of bytes to write.
+
+	The values for this have to exact.
+
+Note that for buffer values,
+we would have to do casting to the var.
+
+	For example,
+	double d = 45.8;
+	double *pd = &d;
+	char *pChar;
+	pChar = reinterpret_cast<char *>(pd);
+	// This means that I know pd is a pointer to a double but for now,
+	// treat it as if it was a character pointer.
+	// Note that pChar is now a valid argument as addressOfBuffer.
+
+---
+
+Look at Program 13-11.

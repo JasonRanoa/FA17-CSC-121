@@ -1,0 +1,134 @@
+CSC 121 001
+Computer Science I
+
+Day 16 (?) October 19 Thursday
+Chapter 10 Pointers
+
+---
+
+POINTERS
+Most software engineers use this because it's such a flexible and powerful tool.
+
+Outline:
+10.2 Pointer Variables to Fundamental Data Types
+	 such as integers, doubles, strings
+10.3 Arrays and Pointers
+10.4 Pointer Arithmetic
+	 The most common application of this is ++ and --.
+10.5 Initializing Pointer
+	 This is important since a dangling pointer can be used to destroy programs. Initialize it to NULL.
+10.7 Pointers as function parameters
+10.8 Pointers to Constants and Constant Pointers
+	 A constant pointer is a pointer whose address you cannot change.
+	 Pointers to constants are pointers to values in the memory space.
+10.9 Dynamic Memory Allocation
+	 THIS IS ANOTHER HUGE TOPIC. This is where most of the power of pointers come from.
+	 Dynamic means at runtime -- like when executing a program.
+	 The reserved word for this is -- NEW.
+	 This is in contrast to memory allocation at compile time (which usu. happens)
+
+---
+
+What is a POINTER?
+
+	Take a look back.
+	When doing this: int myNumber = 5;
+		Somewhere during runtime, a memory for an int was allocated.
+		NOTE. Memories are usually counted as 0xNNN.
+		For example, 5 is saved at address 0x5AE2B.
+		The name, myNumber, is linked to that address.
+
+	If we want to access the memory address,
+	use the ampersand operator (&).
+
+		e.g. &myNumber equates to 0x5AE2B
+
+	This becomes useful since we can assign the address to another.
+
+Creating pointers.
+
+	Use a star before the variable name. (Star notation).
+
+	e.g.
+	int myNum = 5; // for example, has address 0x5AE2B
+	int *myPtr; // The star lets the compiler know that it's a pointer var.
+
+	myPtr = &myNum; // Assigns myNum address to pointer.
+
+---
+Take a look at Program 10-10.
+This deals with arrays and pointers, pointer arithmetic.
+
+Line 10 declares an integer array of 8 members.
+In there, memory (RAM) for eight integers are reserved.
+The variable name, set, is linked to address of the first member.
+
+Line 11 declares an integer point and initializes it to the name of the array.
+The name (set; no brackets, just the name) is a pointer to an int, specifically the first member of an int array.
+This is why the operation is legal.
+
+Line 14 references the VALUE found at the address.
+In effect, set[0] == *numPtr == *set.
+The star, as it is used, is called the DEREFERENCING OPERATOR.
+It is also used at Line 20.
+
+Line 15 - 21 contains the while loop code.
+	Line 15 condition has numPtr < &set[SIZE-1]
+	set[SIZE-1] refers to the last member of the array. The ampersand gives out the address. So, &set[SIZE-1] gives the address of the last member.
+
+	Note. An integer occupies 4 bytes in memory.
+	So, the array takes up 32 bytes.
+	If the set = 0x100, then &set[1] would be 0x104.
+	Disregarding base-16 addition rules, &set[7] would have 0x128.
+
+	Memory arithmetic happens at Line 18.
+	However, the increment operator (++) just adds one.
+			 The address should add 4 bytes since we have ints.
+
+	This is handled by the compiler, by the pointer type at declaration.
+	i.e. numPtr = numPtr + 1 * sizeof(int);
+						     (This is added automatically by the compiler).
+
+	The arithmetic is designed to be human-friendly. Adding one would mean getting to the next value.
+
+---
+Take a look at Program 10-14.
+Pointer Initialization, Dynamic Memory Allocation and Freeing
+
+This is basically writing arrays of dynamic lengths.
+
+Line 10 declares a pointer to a double value and initializes it to nullptr.
+The initialization to a null pointer is important to address security issues. Behind the scenes, this basically means double *sales = 0;
+
+	Note. The first few parts of memory is dedicated to operating system.
+		  Those pieces of memory are protected by hardware and privileged code.
+		  For user programs, this is basically off-limits.
+
+Line 22 uses dynamic allocation.
+Notice the keyword "new". This means that allocate memory the size of the given data type. It is called the DYNAMIC ALLOCATOR KEYWORD.
+	sales = new double[numDays];
+	This means to allocate N (from numDays) spaces for doubles and assign the address of the first member to the sales pointer.
+
+	Notice that runtime memory allocation takes up processing power.
+	Do this when needing an array of dynamic size.
+	Do NOT do this for normal variables.
+
+Line 47 has freeing of dynamic memory.
+THIS IS IMPORTANT! This is called CLEANING UP AFTER YOURSELF.
+This involves something called "heap space". When dynamically allocating memory, it doesn't automatically deallocate the space.
+
+	Syntax: 	delete [] sales;
+				Note the
+
+If you don't do this, memory leaks would happen.
+Allocated memory can accumulate and heap space will run out.
+If heap space (which is in RAM) is full, the program goes to the swap space (in hard drives and SSDs, virtual memory). That is extremely slower.
+
+THIS IS SUCH A SERIOUS PROBLEM that multibillion dollar companies have created tools to avoid this.
+	e.g. PCLint for C/C++
+		 http://www.gimpel.com/html/index.htm
+
+Line 48 sets sales to a null pointer.
+This is a defensive move to remove a dangling pointer.
+
+--- END LECTURE.

@@ -1,0 +1,94 @@
+CSC 121 001
+Computer Science I
+
+Day 18 October 26 Thursday
+
+What to expect for the first lesson for CSC 122 Computer Science II.
+Chapter 11 More about OOP
+11.3 	Friends of Classes
+	 	wherein two classes are of the same family,
+	 	so they have access
+11.4 	Member-wise Assignment
+	 	wherein you have get the object and copy each member.
+	 		For example,
+			Rectangle X, Y = Rectangle(3, 4);
+			// X = Y is not allowed in C++
+11.5 	Copy Constructors
+	 	wherein a constructor does member-wise assignment.
+	 		Note that when there are pointers in the object,
+	 	another memory allocation will be done.
+11.6 	Operator Overloading
+	 	wherein we can create our own operators.
+	 	e.g. comparing two Rectangle objects with <.
+	      Normally, that would fail.
+11.12 	Inheritance
+		wherein you have Class A and you need to make a class B that's a type of Class A.
+11.14	Protecting Members and Class Access
+		Previously -- Access Levels: Private and Public.
+		New -- Protected.
+11.15	Inherited Constructors and Destructors
+11.17 	Overwriting the Base Class Function
+		wherein the inherited class has function foo() and you need to create foo() for your class.
+
+As the course ends, more data structures will be discussed.
+	- Stacks and Queues
+	- Binary Trees (precursor for all databases).
+	- Vectors
+
+---
+
+Chapter 12 C-Strings and the String class
+Most of this lesson is about legacy C code.
+
+In C, strings are treated as character arrays.
+
+---
+
+Chapter 13 Advanced File I/O Operations
+
+---
+
+Binary Files v. Text Files
+
+Binary files are stored without encoding.
+For example, executable files (.exe) are binary files.
+
+How do you read and write in binary files?
+That's discussed later on.
+
+---
+
+The File Stream (fstream) Class.
+
+For more flags, refer to Table 13-1.
+	Flag		Description
+	ios::app	Always append data
+	ios::ate 	Initially at the end of the file
+	ios::binary	Read data in binary form
+	ios::trunc	If file exists, discard contents and truncate size to zero.
+
+---
+
+Take a look at Program 13-2.
+Example of sophisticated things for flags.
+
+---
+
+Take a look at Program 13-5.
+There are two new tools are string extraction.
+Note: These are not in the code.
+
+1. 	getline()
+	This is the quick and dirty.
+
+2. 	File Copy
+	This is the professional way.
+	This involves evaluating character by character.
+
+	To do that, do either of the following:
+	-	char = file.get();
+		Do this in a for-loop.
+		while (ch != EOF) {
+			c = file.get();
+		}
+	-

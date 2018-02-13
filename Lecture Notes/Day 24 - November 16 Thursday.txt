@@ -1,0 +1,159 @@
+CSC 121 001 Computer Science I
+16 November 2017 Thursday
+
+CHAPTER 12 C-Strings and the String class
+For this chapter...
+	1. 	C-Strings
+	2. 	Library Functions for C-Strings
+	3. 	Conversions between Numbers and Strings
+	4. 	Writing custom C-String Handler Functions
+	5. 	More about the C++ String class
+	6. 	Case Study
+
+[LECTURE START]
+
+C-Strings	Basically, an array of characters.
+---------	This is the same...
+				char name[] = "Bark";
+				char *name = "Bark";
+
+			This can be stored sequentially in memory.
+			This in contrast to other data structures
+				such as linked lists, binary trees, stacks and queues.
+
+			These are terminated by a null character - '\0'
+			When using string literals, this null character is silently inserted.
+			This is used to signify the string has ended.
+
+			These can come in three flavors.
+				1. 	Hard-coded String Literals
+					These are anything in double quotes.
+						e.g. "Woof"
+
+				2. 	Programmer-defined arrays of characters.
+					This is using the definition.
+						e.g. char name[] = "Woof";
+
+				3. 	Pointers to characters
+					Basically, an array. The program continues the read the memory sequentially until it reaches a null terminator.
+						e.g. char *name = "Woof";
+
+PROGRAM READING
+---------------
+
+Program 12-1.
+------------
+
+-	Line 9
+	const char * is for pointers to constant string literals.
+	NOTE. Review constant pointers and pointers to constant values.
+
+-	Line 12
+	Observe that a string literal is assigned to the pointers.
+	The string literals are saved in memory and the pointer to the first character is saved to the pointers.
+
+-	Line 22
+	The string literal can be used as a pointer.
+		e.g.	cout << int( "literal" )
+				This is printing the address of the first character 'l'.
+				This works because technically, assigning string literals
+					gives the pointer, not the string literal.
+					This operation -- cout << "literal",
+						sees the pointer and accesses it as an array of chars.
+
+NOTE.
+The size of the character array, when assigned to a string literal, is the length of the string literal + 1 (for the null terminator).
+
+Program 12-2
+------------
+
+-	Line 14
+	When using C Strings, this operation -- cin >> name; -- is invalid.
+	Use the getline() function instead.
+		like this: cin.getline(line, LENGTH)
+		Note that the LENGTH here refers to the limit of characters to input.
+
+Text. Page 819
+--------------
+
+	Read the following code:
+		char name[] = "John Q. Public"; // Size 15
+		char *p;
+		p = name;
+		cout << p << endl;
+		p = "Jane Doe";
+		cout << p << endl;
+	Note that the size of the C-String saved to the variable, p, changes.
+	This is because only the pointer of the first character is saved.
+
+Program 12-3
+------------
+
+-	Line 12
+	This is dynamically allocated.
+	In contrast, we can do this -- char pname[NAME_LENGTH],
+		this is static memory allocation. The NAME_LENGTH bytes are saved within program memory.
+
+[END PART 1]
+
+
+PART 2
+C-STRING LIBRARY Functions
+--------------------------
+
+1 |	strlen(char *)
+
+2 | strcat(char *string1, char *string2)
+	This is for concatenation. It appends the contents of string2 to string1.
+	Technically, the value of string1 is destroyed and replaced with the concatenated string.
+
+3 | strcpy(char *string1, char *string2)
+	The value of string2 is copied to the address of string1.
+
+	NOTE.
+	The functions, strcat() and strcpy(), is dangerous. They don't do array bounds checking so if string1 isn't large enough to contain the new string, it will overflow.
+
+Program 12-4
+------------
+
+-	Line 21
+	C-Strings cannot be compared using the standard equals (=) operation.
+
+Instead, we should use the library function, strcmp().
+
+4 | strcmp(char *string1, char *string2)
+	This is basically a loop that compares both strings character by character.
+	When the two strings are equal, it returns 0.
+
+	For example, Program 12-6
+	-	Line 31
+		if ( strcmp(partNum, "S147-2A") == 0 ) ...
+
+	However, it returns
+		a positive number if string1 comes first in alphabetical order.
+		a negative number if string2 comes first in alphabetical order.
+
+
+STRING STREAMS
+--------------
+
+This chapter introduces two new objects --
+	1 |	istringstream
+		This is the input string stream object. Like cin.
+
+		For example, Program 12-8.
+		-	Line 11
+			Uses the constructor to input a string to the string stream.
+
+		-	Line 19
+			Uses the input string stream to populate the variables,
+			as if the user types it in.
+
+		-	Line 24
+			The str(string) method is used.
+			That method clears out the stream and adds the contents of the string argument.
+
+		-	Line 37
+			Uses the str() method (without arguments) to return the string and send it to cout (i.e. printing it out).
+
+	2 |	ostringstream

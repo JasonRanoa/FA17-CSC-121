@@ -1,0 +1,83 @@
+CSC 121 001 Computer Science I
+14 November 2017 Tuesday
+
+CHAPTER 13 Advanced File I/O Operations
+Serialization with Strings and C-Strings.
+
+---
+
+Object Serialization.
+The problem with it is that we can have:
+	1. Objects within classes.
+	2. Objects within objects.
+	3. Relationships between objects
+	   such as inheritance
+	4. Pointers
+	   Sometimes, this comes in hidden ways.
+	   Examples.
+	   		- an array
+			- a String object which is a pointer to a dynamically allocated character array
+
+When saving this data to a flat file,
+all of this have to saved in a special way.
+We can't just save the pointers.
+
+	For example, when saving strings.
+	Strings can have variable lengths.
+
+Object Serialization takes care of that.
+
+---
+
+The following code takes a look at a case study.
+CASE STUDY - OBJECT SERIALIZATION.
+Starts at Page 898.
+
+---
+
+Take at a look at the code @ Page 899.
+The contents of serialization.h
+
+-	Line 22 and 24.
+	Notice that the streams are passed by reference.
+	This is to assure that the entire program uses the same stream and to avoid confusion.
+
+-	Line 12 to 15
+	Notice the const attribute of the getters.
+	This is to ensure that no changes are done to the object when this function is called.
+
+	The convention is that all getters should have the const attribute.
+	READ THIS.
+	http://stackoverflow.com/questions/40137928/why-use-a-const-member-function
+
+---
+
+Take a look at Figure 13-5 @ Page 900.
+
+-	For strings,
+	we need to include the length of the strings before the actual data of the strings.
+
+-	On String::c_str() v. String::data()
+	Both of these return a pointer to a character array.
+	READ THIS.
+	https://stackoverflow.com/questions/194634/string-c-str-vs-data
+	For the following case study, use String.data()
+
+-	Line 55 and 56.
+	The buffer is null-terminated and it's assigned to a String object.
+	The = operator is overloaded.
+
+---
+
+Take a look at Program 13-20.
+
+---
+
+Note. 	ON SERIALIZATION AND RANDOM ACCESS
+		Using this kind of serialization disallows direct random access by size of the record. One way to circumvent that is to create another file that indexes the location of each record.
+			For example,
+				Record 1: Location 123
+				Record 2: Location 234
+			... or something like that.
+
+---

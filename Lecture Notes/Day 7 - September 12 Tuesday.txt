@@ -1,0 +1,99 @@
+CSC 121 001 Computer Science I
+September 12 Tuesday
+
+Lecture Notes.
+Project in Use: Sandbox-Wk4.Ch5
+
+---
+
+Three Videos
+Bucky's C++ Programming Tutorials
+
+	n.19 Simple Program using a Loop
+
+	NOTE. In software engineering, the requirements of the program should be specified.
+
+		e.g. 	Input 5 Numbers and Output the Sum
+				For this, the requirements are not clear enough.
+					There are many input terminals (e.g. keyboard)
+					The output format isn't specified.
+
+				The WHILE loop requirement isn't a good requirement.
+				What loop to be used is the discretion of the software engineer. (In this case, a FOR loop would work better.)
+
+	NOTE. C++ is named after
+		  its predecessor, the C language,
+		      and the post-increment operator, ++.
+
+	NOTE. ++ is called a post-fix unary increment operator.
+		  Post-fix since it's used after the variable.
+		  Unary since it's attached to a single operand.
+		      In contrast, a binary operator needs two operands.
+
+	n.24 Do-While Loops
+	n.22 For Loops
+
+	NOTE. You can declare variables inside a FOR loop's initializer.
+		  e.g. for (int i = 0; i < 10; i++) { ... }
+
+		  The three parts of the FOR loop (in order) are:
+			  Initialization
+			  Loop Continuation Condition
+			  Increment
+
+---
+
+KEYWORD --- continue.
+
+			Signals the loop to stop the current iteration and proceed to the next loop.
+
+---
+
+Using Files for Data Storage
+Section 5.12 discusses the basics of File I/O.
+
+To use files:
+	STEP 1		Do the appropriate includes.
+				#include <fstream>
+
+	STEP 2		Create file stream object.
+				Use the file types defined in the fstream standard library.
+
+				e.g.	ofstream outputFile; // stands for Output File Stream
+
+	STEP 3		Open the file.
+				There are functions in the fstream standard library for opening files.
+
+				e.g.	outputFile.open("Filename.txt");
+
+	STEP 4		Use the file.
+				The object cout is a stream. What works for printing there would also work for output file stream.
+
+				e.g. 	outputFile << "Bach\n";
+						The following code writes "Bach<newline>" to the file.
+
+	STEP 5		Close the file.
+
+				e.g. 	outputFile.close();
+
+---
+
+For files, there are streams.
+In lecture, there are two types encountered.
+
+(A)		Output Streams
+		Class: 		ofstream
+		Purpose:	Used for printing text into the file.
+
+(B)		Input Streams
+		Class:		ifstream
+		Purpose:	Used for reading text from the file.
+
+		e.g. 		ifstream inputFile;
+					inputFile >> name
+					// If the file reaches EOF (End of File), the inputFile >> call silently fails.
+
+---
+
+WEEKLY ASSIGNMENT - Chapter 5. Page 321. Qn.26 Using Files: Total and Average Rainfall.
+	Given: rainfall.txt

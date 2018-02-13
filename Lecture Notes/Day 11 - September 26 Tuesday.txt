@@ -1,0 +1,156 @@
+CSC 121 001 FA17
+26 September Tuesday
+
+Day 10. Chapter 7. Continuation.
+Formal Introduction to Object-Oriented Programming
+
+LECTURE NOTES
+	Object Composition
+	Arrays
+	Terminal Manipulation -- Windows.h
+	Case Study
+
+---
+
+Object Composition
+Project in Use: Program 7-11.
+
+	This is where a class is has a member that is an instance on another class.
+	For example, there are two classes: Carpet and Rectangle.
+
+	class Rectangle {
+	private:
+		double width, length;
+	public:
+		// accessors and mutators
+	};
+
+	class Carpet {
+	private:
+		double pricePerYd;
+		Rectangle size;				// Object Composition Here.
+	// More functions below.
+	}
+
+---
+
+INLINE CODE
+This is where function implementation is included in the class header / definition file.
+
+	For example, the getters and setters are usually included inline.
+	class Thing {
+
+	private:
+		double x;
+
+	public:
+		// This is inline code. Accessor.
+		double getX() {
+			return x;
+		}
+		// This in inline code. Accessor.
+		void setX(double tempX) {
+			x = tempX;
+		}
+	};
+
+---
+
+NOTE	There are things called INCLUDE GUARDs.
+		The preprocessor director, #include, copies all the text in the referenced file and pastes it in the file.
+
+		However, there might be problems when there are multiple #include directives in the file as classes CANNOT be declared more than once.
+
+		For that, use INCLUDE GUARDs.
+		These are a set of preprocessor directives that ensure that no class is declared more than once.
+
+			Syntax:
+				#ifndef CLASS_NAME_H
+				#define CLASS_NAME_H
+
+				// Class Declaration
+
+				#endif // CLASS_NAME_H
+
+			Naming Conventions:
+			#ifndef directive means "If not defined...".
+			It should always be paired with the #endif directive.
+				Also, for readability's sake, add a comment after #end_if containing CLASS_NAME_H.
+
+		This is standard and every include header file should have this.
+
+---
+
+STRUCTURES. Section 7-14.
+Let us create a record with various data types.
+
+These are old-fashioned and has vanished in modern usage. However, for backwards compatibility, structs can still be used.
+
+	Syntax:
+	struct StructName {
+		// Variable declarations
+	};
+
+	Note that you can also include a constructor to a struct.
+	Syntax:
+	struct StructName {
+		// Variable declarations
+		StructName() {
+			// do this.
+		}
+	}
+
+	To use this, use it as if it's just another data type.
+	And use dot notation to access struct members.
+	Also, struct members are PUBLIC by default.
+
+---
+
+Enumeration Data Types with
+enum class declarations.
+
+Note that enum class declarations should be outside the scope where they'll be used.
+
+For example, this is valid.
+enum class Days { MON, TUE, WED };
+int main() {
+	Days d = Days::MON;
+}
+
+---
+
+Lecture Notes on Program 7-17.
+Home Software Class Company OOP Case Study
+
+NOTE that the requirement is that to create a class, not a program.
+The user of the class should be the main.cpp and what we make should be made outside of it.
+
+In the interest rate requirement, we must know the following things:
+1. Interest Formula (whether it's simple, compound, or continuous compound)
+2. Interest Rate
+(Typically, this is what happens.)
+
+NOTE that there are also URL calls for C++ that allow a program to download a webpage in text format. To extract data from it, the program would have to parse the page first.
+
+NOTE
+After definition of private variables, do the public documentation.
+This will include all public variables and methods and only that.
+	Things to include: arguments, description
+	Things NOT to include: how the method works inside
+
+This should be designed to be released at a public site like an online website.
+
+NOTE
+The four functions defined in main.cpp are helper functions.
+There are OUTSIDE of the scope of the project.
+
+---
+
+INTRODUCTION TO CHAPTER 8 ARRAYS
+An array is a list of numbers.
+
+
+---
+
+TRIVIA. Bjarne Stroustrup - Creator of C++.
+		Wiki: https://en.wikipedia.org/wiki/Bjarne_Stroustrup
